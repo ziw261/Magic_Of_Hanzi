@@ -22,6 +22,7 @@ public class CharStats : MonoBehaviour {
     public int armrPwr;
     public string equippedWpn;
     public string equippedArmr;
+    public string equippedMagic;
     public Sprite charImage;
 
 
