@@ -62,6 +62,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AreaEntrance.cs" />
     <Compile Include="Assets\Scripts\AreaExit.cs" />
+    <Compile Include="Assets\Scripts\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\BattleChar.cs" />
+    <Compile Include="Assets\Scripts\BattleManager.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CharStats.cs" />
     <Compile Include="Assets\Scripts\DialogActivator.cs" />
@@ -71,9 +74,14 @@
     <Compile Include="Assets\Scripts\GameMenu.cs" />
     <Compile Include="Assets\Scripts\Item.cs" />
     <Compile Include="Assets\Scripts\ItemButton.cs" />
+    <Compile Include="Assets\Scripts\LoadingScene.cs" />
+    <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\PickupItem.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerLoader.cs" />
+    <Compile Include="Assets\Scripts\QuestManager.cs" />
+    <Compile Include="Assets\Scripts\QuestMarker.cs" />
+    <Compile Include="Assets\Scripts\QuestObjectActivator.cs" />
     <Compile Include="Assets\Scripts\Shop.cs" />
     <Compile Include="Assets\Scripts\ShopKeeper.cs" />
     <Compile Include="Assets\Scripts\UIFade.cs" />
