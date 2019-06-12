@@ -94,14 +94,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  movesAvailable: []
+  movesAvailable:
+  - Slash
+  - Fire
   charName: Skeleton
   currentHP: 150
   maxHP: 250
   currentMP: 0
-  maxMp: 0
+  maxMP: 0
   strength: 5
   defence: 5
   wpnPower: 5
   armrPower: 5
   hasDied: 0
+  theSprite: {fileID: 6418707748035730952}
+  deadSprite: {fileID: 0}
+  aliveSprite: {fileID: 0}
+  fadeSpeed: 1

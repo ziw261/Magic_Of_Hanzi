@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893134355932575722}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.2307634, y: 0.019480705, z: -4.2148438}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -94,15 +94,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0ed60b98f46dc498dc68bd41a2339a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
-  movesAvailable: []
+  isPlayer: 1
+  movesAvailable:
+  - Fire
+  - Plasma
   charName: Tim
   currentHP: 0
   maxHP: 0
   currentMP: 0
-  maxMp: 0
+  maxMP: 0
   strength: 0
   defence: 0
   wpnPower: 0
   armrPower: 0
   hasDied: 0
+  theSprite: {fileID: 8403085295199574355}
+  deadSprite: {fileID: 8888318505984086984, guid: 699b7cfac339abe47bd4acd77d77a6e8,
+    type: 3}
+  aliveSprite: {fileID: -1038918931832879880, guid: 699b7cfac339abe47bd4acd77d77a6e8,
+    type: 3}
