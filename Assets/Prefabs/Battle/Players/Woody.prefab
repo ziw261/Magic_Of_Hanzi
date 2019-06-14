@@ -110,3 +110,4 @@ MonoBehaviour:
   theSprite: {fileID: 7292428380340396670}
   deadSprite: {fileID: 21300046, guid: e0ddba6d3fcf21f49949fcc95c849aac, type: 3}
   aliveSprite: {fileID: 21300024, guid: e0ddba6d3fcf21f49949fcc95c849aac, type: 3}
+  fadeSpeed: 1

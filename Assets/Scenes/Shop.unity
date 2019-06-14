@@ -2296,10 +2296,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.40039062
       objectReference: {fileID: 0}
-    - target: {fileID: 1516995595, guid: 11aa52fbf171f894abe53ab4f67936e8, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -3.4746094
-      objectReference: {fileID: 0}
     - target: {fileID: 386248648, guid: 11aa52fbf171f894abe53ab4f67936e8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.40039062
@@ -2309,6 +2305,10 @@ PrefabInstance:
       value: -3.4746094
       objectReference: {fileID: 0}
     - target: {fileID: 1862056759, guid: 11aa52fbf171f894abe53ab4f67936e8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.4746094
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516995595, guid: 11aa52fbf171f894abe53ab4f67936e8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -3.4746094
       objectReference: {fileID: 0}
@@ -2358,7 +2358,7 @@ MonoBehaviour:
   - Iron Sword
   - 
   - 
-  - 
+  - Magic_Mu
   - 
   - 
   - 

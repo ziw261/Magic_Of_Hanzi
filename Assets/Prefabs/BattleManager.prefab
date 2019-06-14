@@ -238,7 +238,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 999
+  m_Text: 
 --- !u!1 &4383888649704007242
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +467,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 999
+  m_Text: 
 --- !u!1 &4383888649721312207
 GameObject:
   m_ObjectHideFlags: 0
@@ -3856,6 +3856,7 @@ MonoBehaviour:
   - {fileID: 2267664282579721316, guid: f7b87a6544a70374d9eadf3b3471ac1d, type: 3}
   - {fileID: 3801224201855578045, guid: 9a2da3f1e3444ca409367695ffc37f7c, type: 3}
   - {fileID: 1536685656728779129, guid: db15b7c2c79c289449e6b225c73507ed, type: 3}
+  - {fileID: 7683458837859699719, guid: 844aa8a6556eab14185cd0340c0cf933, type: 3}
   activeBattlers: []
   currentTurn: 0
   turnWaiting: 0
@@ -3880,6 +3881,21 @@ MonoBehaviour:
     movePower: 85
     moveCost: 10
     theEffect: {fileID: 5463852882641376822, guid: 9f4e138a4390bcf48ae0c2fce14d96ba,
+      type: 3}
+  - moveName: "\u95ED"
+    movePower: -1
+    moveCost: 15
+    theEffect: {fileID: 7055985210289430153, guid: e08db1506ac877f4e985b783da40e11b,
+      type: 3}
+  - moveName: "\u95F2"
+    movePower: -2
+    moveCost: 10
+    theEffect: {fileID: 7055985210289430153, guid: e08db1506ac877f4e985b783da40e11b,
+      type: 3}
+  - moveName: "\u95F9"
+    movePower: 130
+    moveCost: 20
+    theEffect: {fileID: 7055985210289430153, guid: e08db1506ac877f4e985b783da40e11b,
       type: 3}
   enemyAttackEffect: {fileID: 1358828312628847568, guid: c02c65382b858ef45847e47371ee0a0a,
     type: 3}
@@ -3925,6 +3941,11 @@ MonoBehaviour:
   battleNotice: {fileID: 4383888651035586117}
   chanceToFlee: 35
   gameOverScene: GameOver
+  rewardXP: 500
+  rewardItems:
+  - Wooden Sword
+  - Iron Armor
+  cannotFlee: 0
 --- !u!1 &4383888650353462226
 GameObject:
   m_ObjectHideFlags: 0
@@ -4233,7 +4254,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 999
+  m_Text: 
 --- !u!1 &4383888650394796185
 GameObject:
   m_ObjectHideFlags: 0
@@ -5574,7 +5595,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 999
+  m_Text: 
 --- !u!1 &4383888650645965536
 GameObject:
   m_ObjectHideFlags: 0
@@ -5811,7 +5832,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 999
+  m_Text: 
 --- !u!1 &4383888650656267272
 GameObject:
   m_ObjectHideFlags: 0
@@ -5969,7 +5990,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 999
+  m_Text: 
 --- !u!1 &4383888650693593081
 GameObject:
   m_ObjectHideFlags: 0
@@ -7259,7 +7280,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 999
+  m_Text: 
 --- !u!1 &4383888651126526461
 GameObject:
   m_ObjectHideFlags: 0
@@ -7607,7 +7628,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 999
+  m_Text: 
 --- !u!1 &4383888651232944011
 GameObject:
   m_ObjectHideFlags: 0
@@ -8943,7 +8964,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 999
+  m_Text: 
 --- !u!1 &4383888651521325904
 GameObject:
   m_ObjectHideFlags: 0

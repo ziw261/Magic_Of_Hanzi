@@ -105,6 +105,9 @@ MonoBehaviour:
   - {fileID: 3027799941832780898, guid: 42006b3aaeda1a7428005669f9bdc0a4, type: 3}
   - {fileID: 7311850492221963217, guid: 6101a1268f5518c46a2249cc5b413166, type: 3}
   - {fileID: 2523468302365574630, guid: ecadd4ea73924a146b71875a400eb367, type: 3}
+  - {fileID: 3224266221445938324, guid: 136a872f5ffd7214bbfe0c26d18b24de, type: 3}
+  - {fileID: 2925306389347633746, guid: b29c353c964d4764db9eb8fdeeb909c5, type: 3}
+  - {fileID: 2601130817190054308, guid: 7ff01e81e093c4348845edfd514afab1, type: 3}
   currentGold: 0
 --- !u!114 &1199380204
 MonoBehaviour:
@@ -120,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questMarkerNames:
   - 
-  - fight the demon
+  - Fight the dragon
   - enter the  cave
   - quest test
   - save the world

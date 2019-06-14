@@ -16,7 +16,10 @@
           <e p="BattleManager.cs" t="Include" />
           <e p="BattleMove.cs" t="Include" />
           <e p="BattleNotification.cs" t="Include" />
+          <e p="BattleReward.cs" t="Include" />
+          <e p="BattleStarter.cs" t="Include" />
           <e p="BattleTargetButton.cs" t="Include" />
+          <e p="BattleType.cs" t="Include" />
           <e p="CameraController.cs" t="Include" />
           <e p="CharStats.cs" t="Include" />
           <e p="DamageNumber.cs" t="Include" />

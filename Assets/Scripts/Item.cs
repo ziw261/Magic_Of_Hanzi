@@ -83,6 +83,8 @@ public class Item : MonoBehaviour {
             selectedChar.armrPwr = armorStrength;
         }
 
-        GameManager.instance.RemoveItem(itemName);
+        if (!isMagic) {
+            GameManager.instance.RemoveItem(itemName);
+        }
     }
 }

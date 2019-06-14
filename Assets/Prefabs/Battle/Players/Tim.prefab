@@ -98,6 +98,9 @@ MonoBehaviour:
   movesAvailable:
   - Fire
   - Plasma
+  - ' '
+  - ' '
+  - ' '
   charName: Tim
   currentHP: 0
   maxHP: 0
@@ -113,3 +116,4 @@ MonoBehaviour:
     type: 3}
   aliveSprite: {fileID: -1038918931832879880, guid: 699b7cfac339abe47bd4acd77d77a6e8,
     type: 3}
+  fadeSpeed: 1

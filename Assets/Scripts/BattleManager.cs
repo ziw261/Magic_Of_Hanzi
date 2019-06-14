@@ -42,10 +42,16 @@ public class BattleManager : MonoBehaviour {
 
     public int chanceToFlee = 35;
 
+    private bool fleeing;
+
     public string gameOverScene;
-    
-    
-    
+
+    public int rewardXP;
+    public string[] rewardItems;
+
+    public bool cannotFlee;
+
+    private string skipTurn = "?";
     
     // Start is called before the first frame update
     void Start() {
@@ -56,7 +62,7 @@ public class BattleManager : MonoBehaviour {
     // Update is called once per frame
     void Update(){
         if(Input.GetKeyDown(KeyCode.T)) {
-            BattleStart(new string[] { "Eyeball", "Spider", "Skeleton" });
+            BattleStart(new string[] { "Eyeball", "Spider", "Skeleton" }, false);
         }
 
         if (battleActive) {
@@ -81,10 +87,12 @@ public class BattleManager : MonoBehaviour {
         
     }
 
-    public void BattleStart(string[] enemiesToSpawn) {
+    public void BattleStart(string[] enemiesToSpawn, bool setCannotFlee) {
         if(!battleActive) {
             battleActive = true;
 
+            cannotFlee = setCannotFlee;
+            
             GameManager.instance.battleActive = true;
 
             transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, transform.position.z);
@@ -95,7 +103,9 @@ public class BattleManager : MonoBehaviour {
             //Switch battle music
             AudioManager.instance.PlayBGM(0);
 
-            
+            checkMagicCai();
+            checkMagicMu();
+            checkMagicShi();
             for(int i=0; i<playerPositions.Length; i++) {
                 if(GameManager.instance.playerStats[i].gameObject.activeInHierarchy) {
                     for(int j=0; j<playerPrefabs.Length; j++) {
@@ -137,6 +147,8 @@ public class BattleManager : MonoBehaviour {
                     }
                 }
             }
+            
+            
 
             turnWaiting = true;
             currentTurn = Random.Range(0, activeBattlers.Count);
@@ -150,11 +162,26 @@ public class BattleManager : MonoBehaviour {
         if (currentTurn >= activeBattlers.Count) {
             currentTurn = 0;
         }
-
+        
         turnWaiting = true;
         
         UpdateBattle();
         UpdateUIStats();
+        
+        if (skipTurn == activeBattlers[currentTurn].charName) {
+            skipTurn = "?";
+            currentTurn++;
+            if (currentTurn >= activeBattlers.Count) {
+                currentTurn = 0;
+            }
+        
+            turnWaiting = true;
+        
+            UpdateBattle();
+            UpdateUIStats();
+        }
+
+       
     }
 
     public void UpdateBattle() {
@@ -301,10 +328,12 @@ public class BattleManager : MonoBehaviour {
            
             // Check if enemy holds the ability
             if (movesList[i].moveName == moveName) {
+
                
-                // istantiate the effect on target
+                    // istantiate the effect on target
                 Instantiate(movesList[i].theEffect, activeBattlers[selectedTarget].transform.position,
                     activeBattlers[selectedTarget].transform.rotation);
+                
 
                 movePower = movesList[i].movePower;
             }
@@ -312,9 +341,26 @@ public class BattleManager : MonoBehaviour {
         
         Instantiate(enemyAttackEffect, activeBattlers[currentTurn].transform.position,
             activeBattlers[currentTurn].transform.rotation);
-        
-        DealDamage(selectedTarget, movePower);
-        
+
+        Debug.Log(movePower);
+
+        if (movePower == -1) {
+            //DealDamage(selectedTarget,movePower);
+            //Debug.Log("Been here, updated skipturn");
+            skipTurn = activeBattlers[selectedTarget].charName;
+        } else if (movePower == -2) {
+            int temp = activeBattlers[currentTurn].maxHP / 2;
+            activeBattlers[currentTurn].currentHP += temp;
+            if (activeBattlers[currentTurn].currentHP > activeBattlers[currentTurn].maxHP) {
+                activeBattlers[currentTurn].currentHP = activeBattlers[currentTurn].maxHP;
+            }
+            DealDamage(selectedTarget, 15);
+            //UpdateUIStats();
+        } else {
+            
+            DealDamage(selectedTarget, movePower);
+        }
+
         uiButtonsHolder.SetActive(false);
         targetMenu.SetActive(false);
         
@@ -369,18 +415,24 @@ public class BattleManager : MonoBehaviour {
     }
 
     public void Flee() {
-        int fleeSuccess = Random.Range(0, 100);
-        if (fleeSuccess < chanceToFlee) {
-            //end the battle
-            battleActive = false;
-            battleScene.SetActive(false);
-            StartCoroutine(EndBattleCo());
-        } else {
-            NextTurn();
-            battleNotice.theText.text = "Couldn't escape";
+        if (cannotFlee) {
+            battleNotice.theText.text = "You can not flee!";
             battleNotice.Activate();
+        } else {
+            int fleeSuccess = Random.Range(0, 100);
+            if (fleeSuccess < chanceToFlee) {
+                //end the battle
+                //battleActive = false;
+                //battleScene.SetActive(false);
+                fleeing = true;
+                StartCoroutine(EndBattleCo());
+            } else {
+                NextTurn();
+                battleNotice.theText.text = "Couldn't escape";
+                battleNotice.Activate();
+            }
         }
-        
+
     }
 
     public IEnumerator EndBattleCo() {
@@ -411,7 +463,17 @@ public class BattleManager : MonoBehaviour {
         battleScene.SetActive(false);
         activeBattlers.Clear();
         currentTurn = 0;
-        GameManager.instance.battleActive = false;
+        //GameManager.instance.battleActive = false;
+        if (fleeing) {
+            GameManager.instance.battleActive = false;
+           
+
+            fleeing = false;
+        } else {
+            BattleReward.instance.OpenRewardScreen(rewardXP, rewardItems);
+        }
+
+      
         
         AudioManager.instance.PlayBGM(FindObjectOfType<CameraController>().musicToPlay);
 
@@ -424,6 +486,94 @@ public class BattleManager : MonoBehaviour {
         yield return new WaitForSeconds(1.5f);
         battleScene.SetActive(false);
         SceneManager.LoadScene(gameOverScene);
+    }
+
+    public void checkMagicCai() {
+        for (int i = 0; i < GameManager.instance.itemsHeld.Length; i++) {
+            if (GameManager.instance.itemsHeld[i] == "Magic_Cai") {
+                for (int j = 0; j < playerPrefabs[0].movesAvailable.Length; j++) {
+                    if (playerPrefabs[0].movesAvailable[j] == " ") {
+                   
+                        playerPrefabs[0].movesAvailable[j] = "闭";
+                        return;
+                    } else if (playerPrefabs[0].movesAvailable[j] == "闭") {
+                        playerPrefabs[0].movesAvailable[j] = "闭";
+                        //Debug.Log("Been here successfully");
+                        return;
+                    }
+                    
+                    
+                }
+                
+            } 
+        }
+        
+        for (int j = 0; j < playerPrefabs[0].movesAvailable.Length; j++) {
+            if (playerPrefabs[0].movesAvailable[j] == "闭") {
+                playerPrefabs[0].movesAvailable[j] = " ";
+                //Debug.Log("Been here successfully1");
+                return;
+            }
+        }
+    }
+    
+    
+    public void checkMagicMu() {
+        for (int i = 0; i < GameManager.instance.itemsHeld.Length; i++) {
+            if (GameManager.instance.itemsHeld[i] == "Magic_Mu") {
+                for (int j = 0; j < playerPrefabs[0].movesAvailable.Length; j++) {
+                    if (playerPrefabs[0].movesAvailable[j] == " ") {
+                   
+                        playerPrefabs[0].movesAvailable[j] = "闲";
+                        return;
+                    } else if (playerPrefabs[0].movesAvailable[j] == "闲") {
+                        playerPrefabs[0].movesAvailable[j] = "闲";
+                        //Debug.Log("Been here successfully");
+                        return;
+                    }
+                    
+                    
+                }
+                
+            } 
+        }
+        
+        for (int j = 0; j < playerPrefabs[0].movesAvailable.Length; j++) {
+            if (playerPrefabs[0].movesAvailable[j] == "闲") {
+                playerPrefabs[0].movesAvailable[j] = " ";
+                //Debug.Log("Been here successfully1");
+                return;
+            }
+        }
+    }
+    
+    public void checkMagicShi() {
+        for (int i = 0; i < GameManager.instance.itemsHeld.Length; i++) {
+            if (GameManager.instance.itemsHeld[i] == "Magic_Shi") {
+                for (int j = 0; j < playerPrefabs[0].movesAvailable.Length; j++) {
+                    if (playerPrefabs[0].movesAvailable[j] == " ") {
+                   
+                        playerPrefabs[0].movesAvailable[j] = "闹";
+                        return;
+                    } else if (playerPrefabs[0].movesAvailable[j] == "闹") {
+                        playerPrefabs[0].movesAvailable[j] = "闹";
+                        //Debug.Log("Been here successfully");
+                        return;
+                    }
+                    
+                    
+                }
+                
+            } 
+        }
+        
+        for (int j = 0; j < playerPrefabs[0].movesAvailable.Length; j++) {
+            if (playerPrefabs[0].movesAvailable[j] == "闹") {
+                playerPrefabs[0].movesAvailable[j] = " ";
+                //Debug.Log("Been here successfully1");
+                return;
+            }
+        }
     }
     
     
