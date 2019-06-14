@@ -99,12 +99,12 @@ MonoBehaviour:
   - Plasma
   - Fire
   charName: Dragon
-  currentHP: 1000
-  maxHP: 1000
-  currentMP: 0
-  maxMP: 0
-  strength: 15
-  defence: 15
+  currentHP: 500
+  maxHP: 500
+  currentMP: 20
+  maxMP: 20
+  strength: 10
+  defence: 10
   wpnPower: 5
   armrPower: 5
   hasDied: 0

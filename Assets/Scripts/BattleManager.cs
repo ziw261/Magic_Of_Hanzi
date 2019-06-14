@@ -61,9 +61,11 @@ public class BattleManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update(){
+        /*
         if(Input.GetKeyDown(KeyCode.T)) {
             BattleStart(new string[] { "Eyeball", "Spider", "Skeleton" }, false);
         }
+        */
 
         if (battleActive) {
             
@@ -77,10 +79,12 @@ public class BattleManager : MonoBehaviour {
                     StartCoroutine(EnemyMoveCo());
                 }
             }
-
+            
+            /*
             if (Input.GetKeyDown(KeyCode.N)) {
                 NextTurn();
             }
+            */
             
         }
         
@@ -101,7 +105,7 @@ public class BattleManager : MonoBehaviour {
 
 
             //Switch battle music
-            AudioManager.instance.PlayBGM(0);
+            AudioManager.instance.PlayBGM(8);
 
             checkMagicCai();
             checkMagicMu();

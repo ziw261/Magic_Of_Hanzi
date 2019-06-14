@@ -26,9 +26,11 @@ public class BattleReward : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        /*
         if (Input.GetKeyDown((KeyCode.Y))) {
             OpenRewardScreen(54, new string[]{"Iron Sword", "Iron Armor"});
         }
+        */
     }
 
     public void OpenRewardScreen(int xp, string[] rewards) {

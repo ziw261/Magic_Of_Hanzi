@@ -3889,11 +3889,11 @@ MonoBehaviour:
       type: 3}
   - moveName: "\u95F2"
     movePower: -2
-    moveCost: 10
+    moveCost: 2
     theEffect: {fileID: 7055985210289430153, guid: e08db1506ac877f4e985b783da40e11b,
       type: 3}
   - moveName: "\u95F9"
-    movePower: 130
+    movePower: 250
     moveCost: 20
     theEffect: {fileID: 7055985210289430153, guid: e08db1506ac877f4e985b783da40e11b,
       type: 3}
